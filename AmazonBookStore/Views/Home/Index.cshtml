@@ -11,9 +11,31 @@
 
 @foreach (Book b in Model.Books)
 {
-    <h3>@b.Title</h3>
+    <div class="card card-outline-primary m-1 p-1">
+        <div class="bg-faded p-1">
+            <h4>
+                @b.Title
+                <span class="badge badge-pill badge-primary" style="float:right">
+                    <small>$@b.Price</small>
+                </span>
+            </h4>
+        </div>
+        <div class="card-text p-1">Author: @b.Author</div>
+        <div class="card-text p-1">Publisher: @b.Publisher</div>
+        <div class="card-text p-1">ISBN: @b.ISBN</div>
+        <div class="card-text p-1">Classification: @b.Classification</div>
+        <div class="card-text p-1">Category: @b.Category</div>
+        <div class="card-text p-1">Number of pages: @b.PageCount</div>
 
-    <ul>
+    </div>
+    <br />
+}
+
+<div page-blah="@Model.PageInfo" page-action="Index"></div>
+
+
+
+@*<ul>
         <li>Author: @b.Author</li>
         <li>Publisher: @b.Publisher</li>
         <li>ISBN: @b.ISBN</li>
@@ -21,9 +43,4 @@
         <li>Category: @b.Category</li>
         <li>Number of Pages: @b.PageCount</li>
         <li>Price $@b.Price</li>
-    </ul>
-
-    <br />
-}
-
-<div page-blah="@Model.PageInfo" page-action="Index"></div>
+    </ul>*@
