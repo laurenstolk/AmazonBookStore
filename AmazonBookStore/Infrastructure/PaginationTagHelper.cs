@@ -27,9 +27,7 @@ namespace AmazonBookStore.Infrastructure
 
         // Different than the View Context
         public PageInfo PageBlah { get; set; }
-
         public string PageAction { get; set; }
-
         public bool PageClassesEnabled { get; set; } = false;
         public string PageClass { get; set; }
         public string PageClassNormal { get; set; }
@@ -54,6 +52,7 @@ namespace AmazonBookStore.Infrastructure
                     tb.AddCssClass(i == PageBlah.CurrentPage ? PageClassSelected : PageClassNormal);
                 }
 
+                tb.AddCssClass(PageClass);
                 tb.InnerHtml.Append(i.ToString());
 
                 final.InnerHtml.AppendHtml(tb);

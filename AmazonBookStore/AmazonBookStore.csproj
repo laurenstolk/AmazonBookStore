@@ -12,11 +12,19 @@
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
     <None Remove="Models\ViewModels\" />
     <None Remove="Infrastructure\" />
+    <None Remove="Components\" />
+    <None Remove="Pages\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\Types\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Models\ViewModels\" />
     <Folder Include="Infrastructure\" />
+    <Folder Include="Components\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Types\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.22">
