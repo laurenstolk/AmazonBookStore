@@ -1,5 +1,5 @@
 ﻿@page
-@model AmazonBookStore.Pages.BuyModel
+@model AmazonBookStore.Pages.PurchaseModel
 @{
 }
 
@@ -22,7 +22,7 @@
                 <td>@i.Book.Title</td>
                 <td>@i.Quantity</td>
                 <td>@i.Book.Price</td>
-                <td>@(i.Quantity * i.Book.Price)</td>
+                <td>$@(i.Quantity * i.Book.Price)</td>
             </tr>
         }
     </tbody>
@@ -38,4 +38,5 @@
 
 <div>
     <a class="btn btn-primary" href="@Model.ReturnUrl">Continue Shopping</a>
+    <a class="btn btn-primary" asp-controller="Purchase" asp-action="Checkout">Checkout</a>
 </div>

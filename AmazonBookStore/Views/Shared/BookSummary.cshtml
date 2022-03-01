@@ -20,12 +20,12 @@
     <div class="card-text p-1">Category: @Model.Category</div>
     <div class="card-text p-1">Number of pages: @Model.PageCount</div>
 
-    <form method="post" asp-page="/Buy">
+    <form method="post" asp-page="/Purchase">
         <input type="hidden" asp-for="@Model.BookID" />
         <input type="hidden" name="return URL" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
 
         <span class="card-text">
-            <button type="submit" class="btn btn-success btn-sm float-right">Buy</button>
+            <button type="submit" class="btn btn-success btn-sm float-right">Purchase</button>
         </span>
 
     </form>
