@@ -15,7 +15,7 @@ namespace AmazonBookStore.Models
                 .Where(b => b.Book.BookID == bk.BookID)
                 .FirstOrDefault();
 
-            if(line == null)
+            if (line == null)
             {
                 Items.Add(new BasketLineItem
                 {

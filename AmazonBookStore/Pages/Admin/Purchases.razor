@@ -1,0 +1,44 @@
+﻿@page "/admin/purchases"
+@inherits OwningComponentBase<IPurchaseRepository>
+
+<PurchasesTable TableTitle="Unshipped Purchases" Purchases="UnshippedPurchases"
+                ButtonLabel="Shipped" PurchaseSelected="ShipPurchase"></PurchasesTable>
+
+<PurchasesTable TableTitle="Shipped Purchases" Purchases="ShippedPurchases"
+                ButtonLabel="Reset" PurchaseSelected="ResetPurchase"></PurchasesTable>
+
+<button class="btn btn-info" @onclick="@(x=> UpdateData())">Refresh Data</button>
+
+
+@code {
+
+    public IPurchaseRepository repo => Service;
+
+    public IEnumerable<Purchase> AllPurchases { get; set; }
+    public IEnumerable<Purchase> UnshippedPurchases { get; set; }
+    public IEnumerable<Purchase> ShippedPurchases { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+
+    public async Task UpdateData()
+    {
+        AllPurchases = await repo.Purchases.ToListAsync();
+        UnshippedPurchases = AllPurchases.Where(x => !x.PurchaseShipped);
+        ShippedPurchases = AllPurchases.Where(x => x.PurchaseShipped);
+    }
+
+    public void ShipPurchase(int id) => UpdatePurchase(id, true);
+    public void ResetPurchase(int id) => UpdatePurchase(id, false);
+
+    public void UpdatePurchase(int id, bool shipped)
+    {
+        Purchase p = repo.Purchases.FirstOrDefault(x => x.PurchaseID == id);
+        p.PurchaseShipped = shipped;
+        repo.SavePurchase(p);
+
+    }
+
+}

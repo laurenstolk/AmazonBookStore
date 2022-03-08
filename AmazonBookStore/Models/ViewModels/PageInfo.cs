@@ -11,7 +11,7 @@ namespace AmazonBookStore.Models.ViewModels
         public int CurrentPage { get; set; }
 
         // Figure out how many pages we need
-        public int TotalPages => (int)Math.Ceiling((double)TotalNumBooks / BooksPerPage);
+        public int TotalPages => (int) Math.Ceiling((double) TotalNumBooks / BooksPerPage);
 
     }
 }
