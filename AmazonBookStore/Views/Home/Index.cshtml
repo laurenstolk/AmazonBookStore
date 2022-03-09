@@ -4,10 +4,16 @@
 
 @model BooksViewModel
 
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about books.</p>
 </div>
+
+<button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" title="Our site is so secure" data-bs-content=""> Learn something new about Amazon Book Store!
+    You can trust us! It's not even possible for us to do anything sketchy or illegal with your private information because you don't give us any! Crazy cool and respectful of us, huh?
+</button>
+
 
 @foreach (Book b in Model.Books)
 {
@@ -15,5 +21,5 @@
 }
 
 <div page-blah="@Model.PageInfo" page-action="Index" page-class="btn"
-     page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-     page-classes-enabled="true" class="btn-group pull-right m-1"></div>
+        page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+        page-classes-enabled="true" class="btn-group pull-right m-1"></div>

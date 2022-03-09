@@ -11,9 +11,9 @@
         <tr><th>Publisher:</th><td>@b.Publisher</td></tr>
         <tr><th>ISBN:</th><td>@b.ISBN</td></tr>
         <tr><th>Classification:</th><td>@b.Classification</td></tr>
-        <tr><th>Category:</th><td>b.Category</td></tr>
-        <tr><th>Page Count:</th><td>b.PageCount</td></tr>
-        <tr><th>Price:</th><td>b.Price</td></tr>
+        <tr><th>Category:</th><td>@b.Category</td></tr>
+        <tr><th>Page Count:</th><td>@b.PageCount</td></tr>
+        <tr><th>Price:</th><td>@b.Price</td></tr>
     </tbody>
 
 
@@ -39,6 +39,6 @@
         b = repo.Books.FirstOrDefault(x => x.BookID == ID);
     }
 
-    public string EditUrl => $"/admin/books/edit/{b.BookiD}";
+    public string EditUrl => $"/admin/books/edit/{b.BookID}";
 
 }

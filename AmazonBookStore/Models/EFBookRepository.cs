@@ -15,7 +15,6 @@ namespace AmazonBookStore.Models
         public IQueryable<Book> Books => context.Books;
 
 
-
         public void SaveBook(Book b)
         {
             context.SaveChanges();
