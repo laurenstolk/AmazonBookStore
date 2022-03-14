@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using AmazonBookStore.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace AmazonBookStore
 {
@@ -27,10 +28,17 @@ namespace AmazonBookStore
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
             services.AddDbContext<BookContext>(options =>
             {
                 options.UseSqlite(Configuration["ConnectionStrings:BookDBConnection"]);
             });
+
+            services.AddDbContext<AppIdentityDBContext>(options =>
+                options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDBContext>();
 
             services.AddScoped<IBookRepository, EFBookRepository>();
             services.AddScoped<IPurchaseRepository, EFPurchaseRepository>();
@@ -64,6 +72,9 @@ namespace AmazonBookStore
             app.UseSession();
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -91,6 +102,8 @@ namespace AmazonBookStore
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
             });
+
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
